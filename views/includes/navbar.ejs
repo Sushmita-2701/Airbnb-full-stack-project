@@ -1,0 +1,88 @@
+<style>
+  /* .container-fluid{
+    margin-left: 30px;
+  } */
+  .navbar-brand {
+    color: red !important;         
+    font-size: 1.3rem;
+     margin-left: 6rem;
+  }
+  .navbar-brand i {
+    color: red !important;         
+    margin-right: 2px;
+     font-size: 1.9rem;
+      font-weight: bold;
+  }
+  .navbar-nav{
+    margin-right: 5rem;
+    flex: 0 0 auto; 
+  }
+  .search-btn{
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    padding: 0 1rem 0 1rem;
+  }
+   .search-btn:hover{
+    background-color: red;
+    color: white;
+  }
+   .search-btn i{
+   display: inline;
+   margin-right: 10px;
+  }
+  .search-inp{
+    border-radius: 20px;
+    padding: 0.5rem 5rem 0.5rem 2rem;
+  }
+  
+  
+</style>
+<nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-brands fa-airbnb"></i>airbnb</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+         </div>
+         <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+        <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations " />
+        <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+      </form>
+      </div>
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/listings/new">Become a host</a>
+            <% if(!currUser){%>
+        <a class="nav-link" href="/signup">Sign Up</a>
+        <a class="nav-link" href="/login">Log In</a>
+        <% } %>
+          <% if(currUser){%>
+        <a class="nav-link" href="/logout"><b>Log Out</b></a>
+           <% } %>
+         </div>
+    </div>
+  </div>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchForm = document.querySelector("form[role='search']");
+    const searchInput = document.querySelector(".search-inp");
+
+    searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `/listings?search=${encodeURIComponent(query)}`;
+      } else {
+        alert("Please enter a destination!");
+      }
+    });
+  });
+</script>
+

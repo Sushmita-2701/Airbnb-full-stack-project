@@ -1,0 +1,76 @@
+<% layout("layouts/boilerplate") %>
+   <style>
+      #filters {
+         display: flex;
+         flex-wrap: nowrap;
+         /* justify-content: center; */
+         overflow-x: auto;
+         gap: 1rem;
+         scrollbar-width: none;
+         -webkit-overflow-scrolling: touch;
+      }
+
+      #filters::-webkit-scrollbar {
+         display: none;
+      }
+
+      .filter {
+         flex: 0 0 auto;
+         text-align: center;
+         margin-right: 2.4rem;
+         margin-top: 2rem;
+         color: rgb(97, 93, 93);
+
+
+      }
+
+      .filter:hover {
+         color: black;
+         opacity: 1;
+         cursor: pointer;
+
+      }
+
+      .filter p {
+         font-size: 0.9rem;
+      }
+
+      .filter .filter-icons {
+         font-size: 1.2rem;
+      }
+   </style>
+  <!-- Filters -->
+<div id="filters">
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-hotel"></i></div><p>Farms</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-fire"></i></div><p>Trending</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-bed"></i></div><p>Room</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-water-ladder"></i></div><p>Pools</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-umbrella-beach"></i></div><p>Beach</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-mountain-city"></i></div><p>Cities</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-snowflake"></i></div><p>Cold place</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-house"></i></div><p>Tiny homes</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-brands fa-fort-awesome"></i></div><p>Castles</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-igloo"></i></div><p>Domes</p></div>
+   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-bell-concierge"></i></div><p>Services</p></div>
+</div>
+<!-- Listings -->
+<div class="container-fluid mt-4">
+   <div class="row row-cols-lg-6 row-cols-md-3 row-cols-sm-2 row-cols-2 g-4">
+      <% for(let listing of allListings){ %>
+      <div class="col">
+         <a href="/listings/<%= listing._id %>" class="listing-link" style="text-decoration:none; color:inherit;">
+            <div class="card listing-card">
+               <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image"/>
+               <div class="card-body">
+                  <p class="card-text">
+                     <b><%= listing.title %></b><br />
+                     &#8377; <%= listing.price %> for 2 nights <br>
+                     <%= listing.location %>, <%= listing.country %>
+                  </p>
+               </div>
+            </div>
+         </a>
+      </div>
+      <% } %>
+   </div>
+</div>
