@@ -15,7 +15,11 @@ const MongoStore= require('connect-mongo')
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const User = require("./models/user.js")
+
+const nodemailer = require("nodemailer");
+const User = require("./models/user");
+const Listing = require("./models/listing");
+const Booking = require("./models/booking");
 
 const listingRouter =require("./routes/listing.js");
 const reviewsRouter =require("./routes/review.js");
@@ -116,8 +120,55 @@ app.use((err, req, res, next) => {
 });
 
 
+// BOOKING PAGE
+app.get("/bookings/:id", async (req, res) => {
+
+  const { id } = req.params;
+
+  const listing = await Listing.findById(id);
+
+ res.render("booking/booking", { listing });
+
+});
+
+// SAVE BOOKING
 
 
+app.post("/bookings/:id", async (req, res) => {
+  try {
+
+    const { id } = req.params;
+    const { checkin, checkout, guests } = req.body;
+
+    const listing = await Listing.findById(id);
+
+    if (!listing) {
+      return res.send("Listing not found");
+    }
+
+    if (!req.user) {
+      return res.redirect("/login");
+    }
+
+    const booking = new Booking({
+      checkin,
+      checkout,
+      guests,
+      listing: listing._id,
+      user: req.user._id
+    });
+
+    await booking.save();
+
+    req.flash("success", "Booking Done ✅");
+
+    res.redirect("/listings");
+
+  } catch (err) {
+    console.log("REAL ERROR:", err);  // 👈 IMPORTANT
+    res.send("Booking Failed");
+  }
+});
 app.listen(8080, () => {
   console.log("server is live")
 });

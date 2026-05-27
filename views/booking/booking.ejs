@@ -1,0 +1,85 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+     
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="card p-3 booking-card">
+
+        <h3 class="text-center mb-3">Book Your Hostel</h3>
+
+        <!-- Listing Info -->
+        <div class="mb-3">
+          <img src="<%= listing.image.url %>" class="img-fluid rounded" />
+          <h5 class="mt-2"><%= listing.title %></h5>
+          <p class="text-muted">
+            <%= listing.location %>, <%= listing.country %>
+          </p>
+        </div>
+
+        <!-- Booking Form -->
+        <form action="/bookings/<%= listing._id %>" method="POST">
+
+          <div class="mb-3">
+            <label>Check-in Date</label>
+            <input type="date" name="checkin" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Check-out Date</label>
+            <input type="date" name="checkout" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Guests</label>
+            <input type="number" name="guests" class="form-control" min="1" value="1" required>
+          </div>
+
+          <button type="submit" class="btn book-btn w-100">
+            Confirm Booking
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<script>
+document.getElementById("booking-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = {
+    user_name: "User",
+    listing_title: "<%= listing.title %>",
+    location: "<%= listing.location %>",
+    checkin: document.querySelector("input[name='checkin']").value,
+    checkout: document.querySelector("input[name='checkout']").value,
+    guests: document.querySelector("input[name='guests']").value,
+    user_email: "YOUR_EMAIL@gmail.com" // or dynamic user email
+  };
+
+  emailjs.send(
+    "YOUR_SERVICE_ID",
+    "YOUR_TEMPLATE_ID",
+    formData
+  )
+  .then(() => {
+    alert("Booking email sent successfully");
+
+    // optional redirect
+    window.location.href = "/listings";
+  })
+  .catch((error) => {
+    console.log(error);
+    alert("Email failed ❌");
+  });
+});
+</script>

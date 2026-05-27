@@ -1,15 +1,157 @@
-<footer>
-    <div class="f-info">
-    <div class="f-info-socials">
+<style>
+    /* ===== FOOTER BASE ===== */
+.site-footer {
+  background: #0a0a0a;
+  color: #fff;
+  padding: 50px 20px 20px;
+  border-top: 1px solid #00ffff33;
+}
+
+/* ===== GRID LAYOUT ===== */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== BRAND SECTION ===== */
+.footer-logo {
+  color: red;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ===== HEADINGS ===== */
+.footer-col h3 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* ===== LINKS ===== */
+.footer-col a {
+  display: block;
+  color: #bbb;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.footer-col a:hover {
+  color: red;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.footer-socials i {
+  font-size: 1.4rem;
+  margin-right: 10px;
+  cursor: pointer;
+  color: #bbb;
+  transition: 0.3s;
+}
+
+.footer-socials i:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+/* ===== BOTTOM BAR ===== */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #222;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+}
+</style>
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col">
+      <h2 class="footer-logo">OpalNest</h2>
+      <p class="footer-desc">
+        Discover amazing places to stay, explore unique homes, and experience travel like never before.
+      </p>
+
+      <div class="footer-socials">
         <i class="fa-brands fa-square-facebook"></i>
         <i class="fa-brands fa-square-whatsapp"></i>
         <i class="fa-brands fa-square-x-twitter"></i>
         <i class="fa-brands fa-square-linkedin"></i>
+      </div>
     </div>
-    <div >&copy; WanderLust Private Limited</div>
-    <div class="f-info-links">
-        <a href="/privacy">Privacy</a>
-         <a href="/terms">Terms</a>
-          </div>
+
+    <!-- COMPANY -->
+    <div class="footer-col">
+      <h3>Company</h3>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Press</a>
     </div>
+
+    <!-- SUPPORT -->
+    <div class="footer-col">
+      <h3>Support</h3>
+      <a href="#">Help Center</a>
+      <a href="#">Safety</a>
+      <a href="#">Cancellation Options</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-col">
+      <h3>Explore</h3>
+      <a href="/listings">Homes</a>
+      <a href="#">Experiences</a>
+      <a href="#">Destinations</a>
+      <a href="#">Travel Guides</a>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="footer-col">
+      <h3>Legal</h3>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms & Conditions</a>
+      <a href="#">Cookies</a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <p>© 2026 WanderLust Private Limited. All rights reserved.</p>
+  </div>
+
 </footer>

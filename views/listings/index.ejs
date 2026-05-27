@@ -1,76 +1,284 @@
 <% layout("layouts/boilerplate") %>
    <style>
-      #filters {
-         display: flex;
-         flex-wrap: nowrap;
-         /* justify-content: center; */
-         overflow-x: auto;
-         gap: 1rem;
-         scrollbar-width: none;
-         -webkit-overflow-scrolling: touch;
-      }
+     #filters {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.2rem;
+  padding: 1rem 1.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
 
-      #filters::-webkit-scrollbar {
-         display: none;
-      }
+#filters::-webkit-scrollbar {
+  display: none;
+}
 
-      .filter {
-         flex: 0 0 auto;
-         text-align: center;
-         margin-right: 2.4rem;
-         margin-top: 2rem;
-         color: rgb(97, 93, 93);
+.filter  {
+  flex: 0 0 auto;
+  text-align: center;
+  color: red;
+  background-color: #000000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+}
+
+.filter-icons {
+  font-size: 1.3rem;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.3s;
+}
 
 
-      }
+.filter p {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
 
-      .filter:hover {
-         color: black;
-         opacity: 1;
-         cursor: pointer;
+/* hover effect */
+.filter:hover {
+  color: #ffffff;
+}
 
-      }
+.filter:hover .filter-icons {
+  transform: scale(1.1);
+  background: rgba(255, 56, 92, 0.15);
+  border-color: #ff385c;
+  color: #ff385c;
+}
 
-      .filter p {
-         font-size: 0.9rem;
-      }
+/* LISTING CARD MODERN LOOK */
+.listing-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
 
-      .filter .filter-icons {
-         font-size: 1.2rem;
-      }
+.listing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.listing-card img {
+  height: 240px;
+  object-fit: cover;
+
+}
+
    </style>
   <!-- Filters -->
 <div id="filters">
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-hotel"></i></div><p>Farms</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-fire"></i></div><p>Trending</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-bed"></i></div><p>Room</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-water-ladder"></i></div><p>Pools</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-umbrella-beach"></i></div><p>Beach</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-mountain-city"></i></div><p>Cities</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-snowflake"></i></div><p>Cold place</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-house"></i></div><p>Tiny homes</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-brands fa-fort-awesome"></i></div><p>Castles</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-igloo"></i></div><p>Domes</p></div>
-   <div class="filter"><div class="filter-icons"><i class="fa-solid fa-bell-concierge"></i></div><p>Services</p></div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-hotel"></i></div>
+    <p>Farms</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-bed"></i></div>
+    <p>Room</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-water-ladder"></i></div>
+    <p>Pools</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-umbrella-beach"></i></div>
+    <p>Beach</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-city"></i></div>
+    <p>Cities</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-snowflake"></i></div>
+    <p>Cold</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-house"></i></div>
+    <p>Tiny</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-chess-rook"></i></div>
+    <p>Castles</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-igloo"></i></div>
+    <p>Domes</p>
+  </div>
+
+  <div class="filter">
+    <div class="filter-icons"><i class="fa-solid fa-bell-concierge"></i></div>
+    <p>Services</p>
+  </div>
+  <div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-mountain"></i></div>
+  <p>Mountains</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-tree"></i></div>
+  <p>Nature</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-campground"></i></div>
+  <p>Camping</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-ship"></i></div>
+  <p>Boats</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-skiing"></i></div>
+  <p>Skiing</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-tree-city"></i></div>
+  <p>Forest</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-person-swimming"></i></div>
+  <p>Lake</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-sun"></i></div>
+  <p>Sunny</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-building"></i></div>
+  <p>Apartments</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-tent"></i></div>
+  <p>Tents</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-wifi"></i></div>
+  <p>WiFi</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-dumbbell"></i></div>
+  <p>Gym</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-paw"></i></div>
+  <p>Pets</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-utensils"></i></div>
+  <p>Food</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-car"></i></div>
+  <p>Parking</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-spa"></i></div>
+  <p>Spa</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-volcano"></i></div>
+  <p>Adventure</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-mug-hot"></i></div>
+  <p>Cafes</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-moon"></i></div>
+  <p>Night</p>
+</div>
+
+<div class="filter">
+  <div class="filter-icons"><i class="fa-solid fa-bridge"></i></div>
+  <p>Bridges</p>
+</div>
+
 </div>
 <!-- Listings -->
-<div class="container-fluid mt-4">
-   <div class="row row-cols-lg-6 row-cols-md-3 row-cols-sm-2 row-cols-2 g-4">
-      <% for(let listing of allListings){ %>
-      <div class="col">
-         <a href="/listings/<%= listing._id %>" class="listing-link" style="text-decoration:none; color:inherit;">
-            <div class="card listing-card">
-               <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image"/>
-               <div class="card-body">
-                  <p class="card-text">
-                     <b><%= listing.title %></b><br />
-                     &#8377; <%= listing.price %> for 2 nights <br>
-                     <%= listing.location %>, <%= listing.country %>
-                  </p>
-               </div>
-            </div>
-         </a>
-      </div>
-      <% } %>
+<div class="container-fluid listing-container ">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <% for(let listing of allListings){ %>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+  <div class="card listing-card">
+
+    <!-- IMAGE CLICK -->
+    <div onclick="window.location.href='/listings/<%= listing._id %>'">
+      <img src="<%= listing.image.url %>" class="card-img-top" />
+    </div>
+
+    <div class="card-body">
+
+      <h6><%= listing.title %></h6>
+
+      <p>₹ <%= listing.price %> / night</p>
+
+      <p><%= listing.location %>, <%= listing.country %></p>
+
+      <!-- BOOK BUTTON (FIXED) -->
+      <button
+        type="button"
+        class="btn book-btn"
+        onclick="window.location.href='/bookings/<%= listing._id %>'">
+        Book Hostel
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <% } %>
+
+  </div>
+</div>
+
    </div>
 </div>
