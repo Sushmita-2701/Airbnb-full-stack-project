@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const { comma } = require("postcss/lib/list");
 
 module.exports.listingSchema = Joi.object({
     listing: Joi.object({
