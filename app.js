@@ -95,7 +95,7 @@ app.use((req, res, next) => {
 // ================= ROUTES =================
 app.get("/", async (req, res) => {
   const listings = await Listing.find({});
-  res.render("listings/index.ejs", { listings });
+  res.render("listings/index", { listings });
 });
 
 app.get("/demouser", async (req, res) => {
