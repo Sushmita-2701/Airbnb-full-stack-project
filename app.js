@@ -93,8 +93,9 @@ app.use((req, res, next) => {
 });
 
 // ================= ROUTES =================
-app.get("/", (req, res) => {
-  res.send("🚀 OpalNest is Live!");
+app.get("/", async (req, res) => {
+  const listings = await Listing.find({});
+  res.render("listings/index.ejs", { listings });
 });
 
 app.get("/demouser", async (req, res) => {
